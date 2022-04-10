@@ -1,0 +1,59 @@
+public class Time1
+{
+	private int  hour;
+	private int  minute;
+	private int second;
+	
+	
+	public void SetTime(int hour, int minute, int second)
+	{
+	if(hour<0 || hour>=24 || minute<0 || minute>=60 || second<0 || second>=60)
+			
+		throw new IllegalArgumentException("hour, minute or second is out of bound ");
+		
+		this.hour = hour;
+		this.minute= minute;
+		this.second = second;
+	}
+		
+	public String toUniversalString()
+	{
+		return String.format("%d:%02d:%02d ", hour, minute, second);
+	} 
+	public String toString()
+	{
+		return String.format("%d:%02d:%02d %s", (hour ==0 || hour==12? 12 : hour%12), minute, second, (hour<12? "AM":"PM"));
+	}
+	 
+	
+}
+
+
+public class Time1Test
+{
+	public static void main(String [] args)
+	{
+		Time1 time = new Time1();
+		displayTime("After the time object is created", time );
+		time.SetTime(13,27,06);
+		displayTime("After calling set time ", time );
+		displayTime("After calling set time with illegal values ", time );
+		try 
+		{
+			time.SetTime(99,99,99);
+		}
+		catch (IllegalArgumentException e)
+		{
+		System.out.printf("%n %s", e.getMessage());
+		}
+	}
+	
+	
+	public  void displayTime(String Descripton , Time1 time )
+	{
+		System.out.printf("%n %s%n", Descripton);
+		System.out.printf("Universal time = %s%n", time.toUniversalString());
+		System.out.printf("Standard time = %s%n", time.toString());
+		
+	}
+}
