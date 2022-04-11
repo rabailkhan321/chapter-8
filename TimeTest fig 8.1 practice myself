@@ -1,0 +1,97 @@
+//i have made another time program with get and set method 
+//in TimeTest, i have declared the variables and have made their constructor to know the difference between 
+//the program we made by making constructor and the program we made without making constructor. The only difference i have 
+//seen is that we make constructor when we make different different objects
+// and we do not use constructor when we make only 1 object and give its values separately. This is my observation ans 
+//it can be different from what books say.
+
+public class Time1
+{
+	private int  hour;
+	private int  minute;
+	private int second;
+	
+		public Time1(int hour, int minute, int second)
+	{
+	if(hour<0 || hour>=24 || minute<0 || minute>=60 || second<0 || second>=60)
+			
+		throw new IllegalArgumentException("hour, minute or second is out of bound ");
+		
+		this.hour = hour;
+		this.minute= minute;
+		this.second = second;
+	}
+	
+	public void SetTime(int hour, int minute, int second)
+	{
+	if(hour<0 || hour>=24 || minute<0 || minute>=60 || second<0 || second>=60)
+			
+		throw new IllegalArgumentException("hour, minute or second is out of bound ");
+		
+		this.hour = hour;
+		this.minute= minute;
+		this.second = second;
+	}
+	
+	public int gethour ()
+	{
+		return hour;
+	}
+	
+	
+	public int  getmin ()
+	{
+		return minute;
+	}
+	
+	public int  getsec ()
+	{
+		return second;
+	}
+		
+	public String toUniversalString()
+	{
+		return String.format("%d:%02d:%02d ", hour, minute, second);
+	} 
+	public String toString()
+	{
+		return String.format("%d:%02d:%02d %s", (hour ==0 || hour==12? 12 : hour%12), minute, second, (hour<12? "AM":"PM"));
+	}
+	 
+	
+}
+
+
+
+
+
+
+public class Time1Test
+{
+	public static void main(String [] args)
+	{
+		Time1 time1 = new Time1(13,27,06);
+		displayTime("After the time object is created", time1 );
+		Time1 time2 = new Time1(1,2,03);
+		displayTime("After the time object is created", time2 );
+		//time.SetTime(13,27,06);
+		
+		/*try 
+		{
+			time.SetTime(99,99,99);
+		}
+		catch (IllegalArgumentException e)
+		{
+		System.out.printf("%n %s", e.getMessage());
+		}*/
+	}
+	
+	
+	public static void displayTime(String Descripton , Time1 time )
+	{
+		System.out.printf("%n %s%n", Descripton);
+		System.out.printf("Universal time = %s%n", time.toUniversalString());
+		System.out.printf("Standard time = %s%n", time.toString());
+		
+	}
+}
