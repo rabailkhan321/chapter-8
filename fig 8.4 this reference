@@ -1,0 +1,41 @@
+// this reference fig 8.4 pg 322
+public class ThisTest
+{
+	
+	public static void main(String [] args)
+	{
+		
+		SimpleTest time = new SimpleTest(15, 30, 19);
+		System.out.println(time.buildString());
+		
+		
+	}
+}
+class SimpleTest
+{
+	public int hour;
+	public int minute;
+    public int second;
+	
+	public SimpleTest(int hour, int	minute, int second)
+	{
+		this.hour = hour; 
+		this.minute = minute; 
+		this.second = second;
+	}
+	
+	public String buildString()
+	{
+		return String.format("%s : %s%n  %s : %s %n ","this.toUniveralString", this.toUniveralString(), "toUniveralString", 
+        toUniveralString());
+	}
+	
+	
+	public String toUniveralString()
+	{
+		//here we can use the keyword this or we can simply ignore it because here the variables name are not 
+		//different from instance variables name. In book they have used this but here I am omitting this 
+		return String.format("%d: %d : %d", hour, minute, second);
+	}
+	
+}
