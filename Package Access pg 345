@@ -1,0 +1,28 @@
+public class PackageAccessTest
+{
+	public static void main(String [] args)
+	{
+	PackageAccess pak = new PackageAccess();
+    System.out.printf("after instantiation name = %s num = %d %n", pak.name, pak.num);
+    pak.name = "DDD";
+    pak.num = 2;
+	System.out.printf("after changing values name  = %s num = %d %n", pak.name,  pak.num);
+	
+	
+		
+	}
+}
+
+class PackageAccess
+{
+	int num;
+	String name;
+	
+	public PackageAccess()
+	{
+		num = 9;
+		name = "Rabail";
+	}
+	
+	
+}
