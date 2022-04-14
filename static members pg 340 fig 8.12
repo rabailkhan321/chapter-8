@@ -1,0 +1,63 @@
+//a very simple program that tells about static variables and static methods pg 340 fig 8.12
+
+public class Emp
+{
+	private String  firstname;
+	private String lastname;
+	private static int count;
+	
+	
+	public Emp (String firstname, String lastname)
+	{
+		
+		this.firstname = firstname;
+		this.lastname = lastname;
+		
+		count++;
+		System.out.printf("Employee constructor = %s %s%n  count = %d%n", firstname, lastname, count);
+	}
+	
+	public String getFirstname()
+	{
+		
+		return firstname;
+	}
+	
+	public String getLastname()
+	{
+	return lastname;
+	}
+	
+	public static int getCount()
+	{
+		
+		return count;
+	}
+	
+}
+
+
+
+
+public class EmpTest
+{
+	
+	public static void main(String [] args)
+	{
+		System.out.printf("%nemployee before instantiation = %d%n", Emp.getCount());
+		Emp e1 = new Emp("Jane" , "Green");
+		Emp e2 = new Emp("Jane" , "Blue");
+		
+		
+		
+		System.out.printf("%nEmployee after instantiation %n");
+		System.out.printf("%nvia e1.getCount(): %s", e1.getCount());
+		System.out.printf("%nvia e2.getCount(): %s" ,e2.getCount());
+		System.out.printf("%nvia Emp.getCount(): %s" ,Emp.getCount());
+		System.out.printf("Employee 1 : %s %s ", e1.getFirstname(), e2.getLastname());
+		System.out.printf("Employee 2 : %s %s ", e2.getFirstname(), e2.getLastname());
+		
+		
+
+	}
+}
